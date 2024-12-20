@@ -277,3 +277,4 @@ src/Mwi.Efs.Pos.Api/efpt.config.json
 
 # Ignore all files in 'obj' directories 
 **/obj/
+obj/
