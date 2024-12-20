@@ -34,15 +34,15 @@ namespace CodeChallenge.Repositories
             return _employeeContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
         }
 
-        public OneOf<Employee, NotFound, ServerError> GetEmployeeWithAllReportsById(string id)
+        public async Task<OneOf<Employee, NotFound, ServerError>> GetEmployeeWithAllReportsById(string id)
         {
             Employee employee;
             try
             {
-                employee = _employeeContext.Employees
+                employee = await _employeeContext.Employees
                     .Include(e => e.DirectReports)
                     .ThenInclude(dr => dr.DirectReports)
-                    .SingleOrDefault(e => e.EmployeeId == id);
+                    .SingleOrDefaultAsync(e => e.EmployeeId == id);
             }
             catch (Exception e)
             {

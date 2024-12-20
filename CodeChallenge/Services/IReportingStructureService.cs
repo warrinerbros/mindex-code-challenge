@@ -10,6 +10,6 @@ namespace CodeChallenge.Services
 {
     public interface IReportingStructureService
     {
-        OneOf<ReportingStructure, NotFound, ServerError> GetByEmployeeId(String id);
+        Task<OneOf<ReportingStructure, NotFound, ServerError>> GetByEmployeeId(String id);
     }
 }

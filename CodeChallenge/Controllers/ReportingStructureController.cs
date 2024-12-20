@@ -23,10 +23,10 @@ namespace CodeChallenge.Controllers
         }
 
         [HttpGet("{employeeId}", Name = "getReportingStructureByEmployeeId")]
-        public IActionResult GetReportingStructureByEmployeeId(String employeeId)
+        public async Task<IActionResult> GetReportingStructureByEmployeeId(String employeeId)
         {
             _logger.LogDebug("Received reporting structure GET request for employeeId:\'{EmployeeId}\'", employeeId);
-            var reportingStructureResult = _reportingStructureService.GetByEmployeeId(employeeId);
+            var reportingStructureResult = await _reportingStructureService.GetByEmployeeId(employeeId);
             return reportingStructureResult.Match<IActionResult>(
                 reportingStructure => Ok(reportingStructure),
                 notFound => NotFound(),

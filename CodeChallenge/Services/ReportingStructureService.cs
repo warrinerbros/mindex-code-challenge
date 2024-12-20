@@ -25,9 +25,9 @@ namespace CodeChallenge.Services
             _logger = logger;
         }
 
-        public OneOf<ReportingStructure, NotFound, ServerError> GetByEmployeeId(string employeeId)
+        public async Task<OneOf<ReportingStructure, NotFound, ServerError>> GetByEmployeeId(string employeeId)
         {
-            var getReportsResult = _employeeRepository.GetEmployeeWithAllReportsById(employeeId);
+            var getReportsResult = await _employeeRepository.GetEmployeeWithAllReportsById(employeeId);
             if (!getReportsResult.TryPickT0(out var employee, out var getReportsFailure))
             {
                 return getReportsFailure.Match<OneOf<ReportingStructure, NotFound, ServerError>>(
