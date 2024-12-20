@@ -20,7 +20,7 @@ namespace CodeChallenge.Config
             var builder = WebApplication.CreateBuilder(args);
 
             builder.UseEmployeeDB();
-            
+
             AddServices(builder.Services);
 
             var app = builder.Build();
@@ -30,30 +30,40 @@ namespace CodeChallenge.Config
             {
                 app.UseDeveloperExceptionPage();
                 SeedEmployeeDB();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "CodeChallenge API V1");
+                    c.RoutePrefix = string.Empty;
+                });
+
+                app.UseAuthorization();
+
+                app.MapControllers();
+
             }
-
-            app.UseAuthorization();
-
-            app.MapControllers();
-
             return app;
         }
 
         private void AddServices(IServiceCollection services)
-        {
+            {
 
-            services.AddScoped<IEmployeeService, EmployeeService>();
-            services.AddScoped<IEmployeeRepository, EmployeeRespository>();
+                services.AddScoped<IEmployeeService, EmployeeService>();
+                services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+                services.AddScoped<ICompensationService, CompensationService>();
+                services.AddScoped<ICompensationRepository, CompensationRepository>();
+                services.AddScoped<IReportingStructureService, ReportingStructureService>();
+                services.AddControllers();
+                services.AddEndpointsApiExplorer();
+                services.AddSwaggerGen();
+            }
 
-            services.AddControllers();
+            private void SeedEmployeeDB()
+            {
+                new EmployeeDataSeeder(
+                    new EmployeeContext(
+                        new DbContextOptionsBuilder<EmployeeContext>().UseInMemoryDatabase("EmployeeDB").Options
+                    )).Seed().Wait();
+            }
         }
-
-        private void SeedEmployeeDB()
-        {
-            new EmployeeDataSeeder(
-                new EmployeeContext(
-                    new DbContextOptionsBuilder<EmployeeContext>().UseInMemoryDatabase("EmployeeDB").Options
-            )).Seed().Wait();
-        }
-    }
 }
