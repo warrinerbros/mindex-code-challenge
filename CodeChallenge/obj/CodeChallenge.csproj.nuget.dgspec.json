@@ -1,0 +1,90 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/nickwarriner/Downloads/dotnet-code-challenge/CodeChallenge/CodeChallenge.csproj": {}
+  },
+  "projects": {
+    "/Users/nickwarriner/Downloads/dotnet-code-challenge/CodeChallenge/CodeChallenge.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/nickwarriner/Downloads/dotnet-code-challenge/CodeChallenge/CodeChallenge.csproj",
+        "projectName": "CodeChallenge",
+        "projectPath": "/Users/nickwarriner/Downloads/dotnet-code-challenge/CodeChallenge/CodeChallenge.csproj",
+        "packagesPath": "/Users/nickwarriner/.nuget/packages/",
+        "outputPath": "/Users/nickwarriner/Downloads/dotnet-code-challenge/CodeChallenge/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/nickwarriner/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://mwi.jfrog.io/artifactory/api/nuget/v3/hangfire-pro-remote-2": {},
+          "https://mwi.jfrog.io/artifactory/api/nuget/v3/nuget-release/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.26, 6.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-arm64",
+              "version": "[6.0.26, 6.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.26, 6.0.26]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/8.0.1/libexec/sdk/8.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
