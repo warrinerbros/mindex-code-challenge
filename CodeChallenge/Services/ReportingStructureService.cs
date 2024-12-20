@@ -38,7 +38,7 @@ namespace CodeChallenge.Services
             
             return new ReportingStructure
             {
-                EmployeeId = employee.EmployeeId,
+                Employee = employee,
                 NumberOfReports = GetNumberOfReports(employee)
             };
         }
