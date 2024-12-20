@@ -22,17 +22,16 @@ namespace CodeChallenge.Controllers
             _reportingStructureService = reportingStructureService;
         }
 
-        [HttpGet("{employeeId}", Name = "getEmployeeById")]
+        [HttpGet("{employeeId}", Name = "getReportingStructureByEmployeeId")]
         public IActionResult GetReportingStructureByEmployeeId(String employeeId)
         {
-            _logger.LogDebug("Received reporting structure get request for employeeId:\'{EmployeeId}\'", employeeId);
-
-            var reportingStructure = _reportingStructureService.GetByEmployeeId(employeeId);
-
-            if (reportingStructure == null)
-                return NotFound();
-
-            return Ok(reportingStructure);
+            _logger.LogDebug("Received reporting structure GET request for employeeId:\'{EmployeeId}\'", employeeId);
+            var reportingStructureResult = _reportingStructureService.GetByEmployeeId(employeeId);
+            return reportingStructureResult.Match<IActionResult>(
+                reportingStructure => Ok(reportingStructure),
+                notFound => NotFound(),
+                serverError => StatusCode(500, serverError.Message)
+            );
         }
     }
 }

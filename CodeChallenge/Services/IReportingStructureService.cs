@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OneOf;
+using OneOf.Types;
 
 namespace CodeChallenge.Services
 {
     public interface IReportingStructureService
     {
-        ReportingStructure GetByEmployeeId(String id);
+        OneOf<ReportingStructure, NotFound, ServerError> GetByEmployeeId(String id);
     }
 }
