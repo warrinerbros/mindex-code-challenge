@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CodeChallenge.Services
 {
-    public interface IReportingStructureService
+    public interface IEmployeeService
     {
-        ReportingStructure GetByEmployeeId(String id);
+        Employee GetById(String id);
+        Employee Create(Employee employee);
+        Employee Replace(Employee originalEmployee, Employee newEmployee);
     }
 }
