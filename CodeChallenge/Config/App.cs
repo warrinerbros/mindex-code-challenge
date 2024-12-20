@@ -50,6 +50,8 @@ namespace CodeChallenge.Config
 
                 services.AddScoped<IEmployeeService, EmployeeService>();
                 services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+                services.AddScoped<ICompensationService, CompensationService>();
+                services.AddScoped<ICompensationRepository, CompensationRepository>();
                 services.AddScoped<IReportingStructureService, ReportingStructureService>();
                 services.AddControllers();
                 services.AddEndpointsApiExplorer();
