@@ -10,21 +10,21 @@ namespace CodeChallenge.Services
 {
     public class ReportingStructureService : IReportingStructureService
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IReportingStructureRepository _reportingStructureRepository;
         private readonly ILogger<ReportingStructureService> _logger;
 
         public ReportingStructureService(ILogger<ReportingStructureService> logger,
             IReportingStructureRepository reportingStructureRepository)
         {
-            _employeeRepository = employeeRepository;
+            _reportingStructureRepository = reportingStructureRepository;
             _logger = logger;
         }
 
-        public Employee GetByEmployeeId(string employeeId)
+        public ReportingStructure GetByEmployeeId(string employeeId)
         {
             if (!string.IsNullOrEmpty(employeeId))
             {
-                return _employeeRepository.GetById(employeeId);
+                return _reportingStructureRepository.GetByEmployeeId(employeeId);
             }
 
             return null;

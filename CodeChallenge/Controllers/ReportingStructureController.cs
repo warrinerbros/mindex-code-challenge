@@ -10,16 +10,16 @@ using CodeChallenge.Models;
 namespace CodeChallenge.Controllers
 {
     [ApiController]
-    [Route("api/employee")]
+    [Route("api/reporting-structure")]
     public class ReportingStructureController : ControllerBase
     {
         private readonly ILogger _logger;
-        private readonly IReportingStructureService _employeeService;
+        private readonly IReportingStructureService _reportingStructureService;
 
-        public EmployeeController(ILogger<ReportingStructureController> logger, IReportingStructureService employeeService)
+        public ReportingStructureController(ILogger<ReportingStructureController> logger, IReportingStructureService reportingStructureService)
         {
             _logger = logger;
-            _employeeService = employeeService;
+            _reportingStructureService = reportingStructureService;
         }
 
         [HttpGet("{employeeId}", Name = "getEmployeeById")]
@@ -27,12 +27,12 @@ namespace CodeChallenge.Controllers
         {
             _logger.LogDebug("Received reporting structure get request for employeeId:\'{EmployeeId}\'", employeeId);
 
-            var employee = _employeeService.GetById(employeeId);
+            var reportingStructure = _reportingStructureService.GetByEmployeeId(employeeId);
 
-            if (employee == null)
+            if (reportingStructure == null)
                 return NotFound();
 
-            return Ok(employee);
+            return Ok(reportingStructure);
         }
     }
 }
